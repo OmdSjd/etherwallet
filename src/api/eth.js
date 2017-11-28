@@ -1,9 +1,6 @@
 import resource from 'resource-router-middleware';
 import eth from '../models/eth';
-var Web3 = require('web3');
-var web3 = new Web3(
-    new Web3.providers.HttpProvider('https://mainnet.infura.io/<API-KEY>')
-);
+
 function Ethereum(a,pk) {
     this.publicKey = a;
     this.privateKey = pk;
@@ -21,17 +18,6 @@ export default ({ config, db }) => resource({
             res.json(result);
             //db.close();
         });
-    },
-    /** POST / - Create a new entity */
-    create({ body }, res) {
-        var wallet = web3.eth.accounts.create();
-        var eth = new Ethereum(wallet.address, wallet.privateKey);
-        db.collection("ethAddress").insertOne(eth, function(err, res) {
-            if (err) throw err;
-            console.log("Eth created");
-            //db.close();
-        });
-        res.json(eth);
     },
     /** GET /:id - Return a given entity */
     read({ eth }, res) {

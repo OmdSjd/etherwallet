@@ -4,7 +4,7 @@ import eth from './eth';
 const Tx = require('ethereumjs-tx');
 const Web3 = require('web3');
 var web3 = new Web3(
-    new Web3.providers.HttpProvider('https://rinkeby.infura.io/<API-KEY>')
+    new Web3.providers.HttpProvider('https://mainnet.infura.io/<api-key>')
 );
 
 function Ethereum(a,pk) {
@@ -38,14 +38,16 @@ export default ({ config, db }) => {
     });
     api.route("/transaction").post((req, res) =>{
         const rawTx = {
-            from: req.body.fromPublicKey,
-            to: req.body.toPublicKey,
+            from: req.body.fromAddress,
+            to: req.body.toAddress,
             value: req.body.amount,
         }
         const tx = new Tx(rawTx);
-        tx.sign(new Buffer(req.body.privateKey, 'hex'));
+        tx.sign(new Buffer(req.body.fromPrivateKey, 'hex'));
+        console.log(new Buffer(req.body.fromPrivateKey))
         var serializedTx = tx.serialize();
         web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex')).on('receipt', console.log);
+        res.end();
     });
 	return api;
 }
