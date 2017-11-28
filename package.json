@@ -1,5 +1,5 @@
 {
-  "name": "Ethereum Wallet",
+  "name": "EthereumWallet",
   "version": "1.0.0",
   "description": "Simple API to create an Ethereum wallet, to check the balance of an ETH address and to send signed transactions.",
   "main": "dist",
