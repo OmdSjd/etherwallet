@@ -1,7 +1,7 @@
 {
-  "name": "ethwallet",
+  "name": "Ethereum Wallet",
   "version": "1.0.0",
-  "description": "Starter project for an ES6 RESTful Express API",
+  "description": "Simple API to create an Ethereum wallet, to check the balance of an ETH address and to send signed transactions.",
   "main": "dist",
   "scripts": {
     "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
@@ -26,9 +26,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/developit/express-es6-rest-api.git"
+    "url": "https://github.com/OmdSjd/etherwallet"
   },
-  "author": "Jason Miller <jason@developit.ca>",
+  "author": "Omid Sajedi <https://github.com/OmdSjd>",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.13.3",
@@ -48,9 +48,5 @@
     "babel-preset-stage-0": "^6.5.0",
     "eslint": "^3.1.1",
     "nodemon": "^1.9.2"
-  },
-  "bugs": {
-    "url": "https://github.com/developit/express-es6-rest-api/issues"
-  },
-  "homepage": "https://github.com/developit/express-es6-rest-api#readme"
+  }
 }
